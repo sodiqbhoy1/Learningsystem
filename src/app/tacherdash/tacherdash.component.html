@@ -1,0 +1,159 @@
+<div class="flex h-screen bg-gray-100">
+  <!-- Sidebar -->
+  <nav
+    [ngClass]="{'w-16': !isSidenavOpen, 'w-64': isSidenavOpen, 'transition-all': true}"
+    class="bg-orange-900 text-white flex-shrink-0 h-full overflow-y-auto"
+  >
+    <div class="p-4 flex items-center justify-between">
+      <h2 *ngIf="isSidenavOpen" class="text-xl font-bold">Teacher Dashboard</h2>
+      <button (click)="toggleSidenav()" class="text-white focus:outline-none">
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            *ngIf="isSidenavOpen"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          ></path>
+          <path
+            *ngIf="!isSidenavOpen"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16m-7 6h7"
+          ></path>
+        </svg>
+      </button>
+    </div>
+    <ul class="space-y-2">
+      <li>
+        <a
+          [routerLink]="['/teacher-profile']"
+          class="flex items-center p-4 hover:bg-orange-700 transition duration-200"
+        >
+          <i class="fas fa-user text-lg mr-3"></i>
+          <span *ngIf="isSidenavOpen" class="ml-3">Profile</span>
+        </a>
+      </li>
+      <li>
+        <a
+          [routerLink]="['/classes']"
+          class="flex items-center p-4 hover:bg-orange-700 transition duration-200"
+        >
+          <i class="fas fa-chalkboard-teacher text-lg mr-3"></i>
+          <span *ngIf="isSidenavOpen" class="ml-3">Classes</span>
+        </a>
+      </li>
+      <li>
+        <a
+          [routerLink]="['/subjects']"
+          class="flex items-center p-4 hover:bg-orange-700 transition duration-200"
+        >
+          <i class="fas fa-book text-lg mr-3"></i>
+          <span *ngIf="isSidenavOpen" class="ml-3">Subjects</span>
+        </a>
+      </li>
+      <li>
+        <a
+          [routerLink]="['/schedule']"
+          class="flex items-center p-4 hover:bg-orange-700 transition duration-200"
+        >
+          <i class="fas fa-calendar-alt text-lg mr-3"></i>
+          <span *ngIf="isSidenavOpen" class="ml-3">Schedule</span>
+        </a>
+      </li>
+      <li>
+        <a
+          [routerLink]="['/reports']"
+          class="flex items-center p-4 hover:bg-orange-700 transition duration-200"
+        >
+          <i class="fas fa-file-alt text-lg mr-3"></i>
+          <span *ngIf="isSidenavOpen" class="ml-3">Reports</span>
+        </a>
+      </li>
+      <li>
+        <a
+          [routerLink]="['/teacher-settings']"
+          class="flex items-center p-4 hover:bg-orange-700 transition duration-200"
+        >
+          <i class="fas fa-cogs text-lg mr-3"></i>
+          <span *ngIf="isSidenavOpen" class="ml-3">Settings</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="flex-1 p-6">
+    <header class="flex items-center justify-between mb-6">
+      <h1 class="text-3xl font-bold text-orange-900">Welcome, {{teacherdetails.firstname}}</h1>
+      <button (click)="openLogoutModal()" class="bg-orange-900 text-white px-4 py-2 rounded-lg hover:bg-orange-700">
+        Logout
+      </button>
+    </header>
+
+    <!-- Teacher Information -->
+    <section class="space-y-6">
+      <h2 class="text-2xl font-semibold mb-4">Teacher Information</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Card for Name -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex items-center">
+          <i class="fas fa-user text-3xl text-orange-600 mr-4"></i>
+          <div>
+            <h3 class="text-lg font-medium mb-2">Name</h3>
+            <p class="text-gray-700"> {{teacherdetails.firstname}} {{teacherdetails.lastname}}</p>
+          </div>
+        </div>
+        <!-- Card for Teacher ID -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex items-center">
+          <i class="fas fa-id-card text-3xl text-orange-600 mr-4"></i>
+          <div>
+            <h3 class="text-lg font-medium mb-2">   Teacher ID</h3>
+            <p class="text-gray-700"> {{teacherdetails.TeacherID}} </p>
+          </div>
+        </div>
+        <!-- Card for Email -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex items-center">
+          <i class="fas fa-envelope text-3xl text-orange-600 mr-4"></i>
+          <div>
+            <h3 class="text-lg font-medium mb-2">Email</h3>
+            <p class="text-gray-700">{{teacherdetails.email}} </p>
+          </div>
+        </div>
+        <!-- Card for Subjects -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex items-center">
+          <i class="fas fa-book text-3xl text-orange-600 mr-4"></i>
+          <div>
+            <h3 class="text-lg font-medium mb-2">Subjects</h3>
+            <p class="text-gray-700">[Subjects Taught]</p>
+          </div>
+        </div>
+        <!-- Card for Classes Assigned -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex items-center">
+          <i class="fas fa-chalkboard-teacher text-3xl text-orange-600 mr-4"></i>
+          <div>
+            <h3 class="text-lg font-medium mb-2">Classes Assigned</h3>
+            <p class="text-gray-700">[Classes Assigned]</p>
+          </div>
+        </div>
+        <!-- Card for Phone Number -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex items-center">
+          <i class="fas fa-phone text-3xl text-orange-600 mr-4"></i>
+          <div>
+            <h3 class="text-lg font-medium mb-2">Phone Number</h3>
+            <p class="text-gray-700">[Phone Number]</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Logout Modal Component -->
+  <app-logout #logoutModal (confirm)="logout()" (cancel)="onCancelLogout()"></app-logout>
+</div>

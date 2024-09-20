@@ -1,0 +1,310 @@
+<app-navbar></app-navbar>
+
+<div class="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+  <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-4xl">
+    <h2 class="text-2xl font-bold mb-6 text-center text-gray-700">Student Admission Form</h2>
+
+    
+
+    <form [formGroup]="newform" (ngSubmit)="submitBtn()" >
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- First Name -->
+        <div class="mb-4 relative">
+          <label for="firstName" class="block text-gray-700 font-semibold mb-2">First Name</label>
+          <div class="flex items-center">
+            <span class="absolute left-3 text-gray-500">
+              <i class="fas fa-user"></i>
+            </span>
+            <input
+              type="text"
+              id="firstName"
+              class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter first name" formControlName="firstname"
+            />
+             </div>
+
+             <div *ngIf="newform.get('firstname')?.invalid && newform.get('firstname')?.dirty || newform.get('firstname' )?.touched ">
+              <small *ngIf="newform.get('firstname')?.errors?.['required']">First name is required.</small>
+              
+            </div>
+            </div>
+
+        <!-- Last Name -->
+        <div class="mb-4 relative">
+          <label for="lastName" class="block text-gray-700 font-semibold mb-2">Last Name</label>
+          <div class="flex items-center">
+            <span class="absolute left-3 text-gray-500">
+              <i class="fas fa-user"></i>
+            </span>
+            <input
+              type="text"
+              id="lastName"
+              class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter last name" formControlName="lastname"
+            />
+          </div>
+
+          <div *ngIf="newform.get('lastname')?.invalid && newform.get('lastname')?.dirty || newform.get('lastname' )?.touched ">
+            <small *ngIf="newform.get('lastname')?.errors?.['required']"> Last name is required.</small>
+            
+          </div>
+
+        </div>
+
+        <!-- Email -->
+        <div class="mb-4 relative">
+          <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+          <div class="flex items-center">
+            <span class="absolute left-3 text-gray-500">
+              <i class="fas fa-envelope"></i>
+            </span>
+            <input
+              type="email"
+              id="email"
+              class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter your email" formControlName="email"
+            />
+          </div>
+           <!-- If the email field is invalid and touched, show error -->
+       <div *ngIf="newform.get('email')?.invalid && newform.get('email')?.touched">
+        <small *ngIf="newform.get('email')?.errors?.['required']">
+          Email is required.
+        </small>
+        <small *ngIf="newform.get('email')?.errors?.['pattern']"> Email must be valid. </small>
+      </div>
+        </div>
+
+        
+        <!-- Date of Birth -->
+        <div class="mb-4 relative">
+          <label for="dob" class="block text-gray-700 font-semibold mb-2">Date of Birth</label>
+          <div class="flex items-center">
+            <span class="absolute left-3 text-gray-500">
+              <i class="fas fa-calendar-alt"></i>
+            </span>
+            <input
+              type="text"
+              id="dob"
+              class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="MMM-DD-YYYY"
+              onfocus="(this.type='date')"
+              onblur="(this.type='text')" formControlName="dob"
+            />
+          </div>
+          <div *ngIf="newform.get('dob')?.invalid && newform.get('dob')?.dirty || newform.get('dob' )?.touched ">
+            <small *ngIf="newform.get('dob')?.errors?.['required']"> Date of birth is required.</small>
+            
+          </div>
+
+        </div>
+
+        <!-- Address -->
+        <div class="mb-4 relative">
+          <label for="address" class="block text-gray-700 font-semibold mb-2">Address</label>
+          <div class="flex items-center">
+            <span class="absolute left-3 text-gray-500">
+              <i class="fas fa-home"></i>
+            </span>
+            <input
+              type="text"
+              id="address"
+              class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter home address" formControlName="address"
+            />
+          </div>
+          <div *ngIf="newform.get('address')?.invalid && newform.get('address')?.dirty || newform.get('address' )?.touched ">
+            <small *ngIf="newform.get('address')?.errors?.['required']"> Address is required.</small>
+            
+          </div>
+
+        </div>
+
+        <!-- Class/Grade Level -->
+        <div class="mb-4 relative">
+          <label for="classLevel" class="block text-gray-700 font-semibold mb-2">Class/Grade Level</label>
+          <div class="flex items-center">
+            <span class="absolute left-3 text-gray-500">
+              <i class="fas fa-school"></i>
+            </span>
+            <select
+              id="class" formControlName="class"
+              class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="" disabled selected>Select class</option>
+              <option value="JSS1">JSS1</option>
+              <option value="JSS2">JSS2</option>
+              <option value="JSS3">JSS3</option>
+              <option value="SSS1">SSS1</option>
+              <option value="SSS2">SSS2</option>
+              <option value="SSS3">SSS3</option>
+            </select>
+          </div>
+          <div *ngIf="newform.get('class')?.invalid && newform.get('class')?.dirty || newform.get('class' )?.touched ">
+            <small *ngIf="newform.get('class')?.errors?.['required']"> Class is required.</small>
+            
+          </div>
+
+        </div>
+
+        <!-- State -->
+        <div class="mb-4 relative">
+          <label for="state" class="block text-gray-700 font-semibold mb-2">State</label>
+          <div class="flex items-center">
+            <span class="absolute left-3 text-gray-500">
+              <i class="fas fa-map-marker-alt"></i>
+            </span>
+            <select 
+              id="state"
+              class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+               formControlName="state"
+            >
+              <option value="" disabled selected>Select state</option>
+              <!-- Populate states dynamically from your backend or script -->
+              <!-- Example options -->
+              <option *ngFor="let state of states" [value]="state.name"> {{ state.name }}</option>
+                     <!-- Add all states here -->
+            </select>
+          </div>
+          <div *ngIf="newform.get('state')?.invalid && newform.get('state')?.dirty || newform.get('state' )?.touched ">
+            <small *ngIf="newform.get('state')?.errors?.['required']"> State is required.</small>
+            
+          </div>
+
+        </div>
+
+        <!-- Local Government -->
+        <div class="mb-4 relative">
+          <label for="localGovernment" class="block text-gray-700 font-semibold mb-2">Local Government</label>
+          <div class="flex items-center">
+            <span class="absolute left-3 text-gray-500">
+              <i class="fas fa-map-signs"></i>
+            </span>
+            <select
+              id="localGovernment" formControlName="lg"
+              class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="" disabled selected>Select local government</option>
+              <option *ngFor="let lg of local_govt" [value]="lg.local_government" > {{lg.local_government}} </option>
+              <!-- Populate local governments dynamically based on selected state -->
+            </select>
+          </div>
+          <div *ngIf="newform.get('lg')?.invalid && newform.get('lg')?.dirty || newform.get('lg' )?.touched ">
+            <small *ngIf="newform.get('lg')?.errors?.['required']"> Local Government is required.</small>
+            
+          </div>
+
+        </div>
+
+        <!-- Parent/Guardian Name -->
+        <div class="mb-4 relative">
+          <label for="guardianName" class="block text-gray-700 font-semibold mb-2">Parent/Guardian Name</label>
+          <div class="flex items-center">
+            <span class="absolute left-3 text-gray-500">
+              <i class="fas fa-user-tie"></i>
+            </span>
+            <input
+              type="text"
+              id="guardianName"
+              class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter parent/guardian's full name" formControlName="parent"
+            />
+          </div>
+          <div *ngIf="newform.get('parent')?.invalid && newform.get('parent')?.dirty || newform.get('parent' )?.touched ">
+            <small *ngIf="newform.get('parent')?.errors?.['required']"> Parent/Guardian name is required.</small>
+            
+          </div>
+
+        </div>
+
+        <!-- Parent/Guardian Phone -->
+        <div class="mb-4 relative">
+          <label for="guardianPhone" class="block text-gray-700 font-semibold mb-2">Parent/Guardian Phone</label>
+          <div class="flex items-center">
+            <span class="absolute left-3 text-gray-500">
+              <i class="fas fa-phone-alt"></i>
+            </span>
+            <input
+              type="tel"
+              id="guardianPhone"
+              class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter parent/guardian's phone number" formControlName="parentnum"
+            />
+          </div>
+          <div *ngIf="newform.get('parentnum')?.invalid && newform.get('parentnum')?.dirty || newform.get('parentnum' )?.touched ">
+            <small *ngIf="newform.get('parentnum')?.errors?.['required']"> Parent/Guardian Number is required.</small>
+            
+          </div>
+        </div>
+        
+      </div>
+
+<!-- Password -->
+<div class="mb-4 relative">
+  <label for="password" class="block text-gray-700 font-semibold mb-2">Password</label>
+  <div class="flex items-center">
+    <span class="absolute left-3 text-gray-500">
+      <i class="fas fa-lock"></i>
+    </span>
+    <input
+      type="password"
+      id="password"
+      class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+      placeholder="Create a password" formControlName="password"
+    />
+  </div>
+
+    <!-- If the password field is invalid and touched, show error -->
+<div *ngIf="newform.get('password')?.invalid && newform.get('password')?.touched">
+<small *ngIf="newform.get('password')?.errors?.['required']">
+Password is required.
+</small>
+<small *ngIf="newform.get('password')?.errors?.['pattern']">
+Password must contain at least one uppercase letter, one lowercase letter, and one special character and must be at least 7 characters long.
+</small>
+</div>
+</div>
+
+<!-- confirm Password -->
+<div class="mb-4 relative">
+  <label for="password" class="block text-gray-700 font-semibold mb-2"> Confirm Password</label>
+  <div class="flex items-center">
+    <span class="absolute left-3 text-gray-500">
+      <i class="fas fa-lock"></i>
+    </span>
+    <input
+      type="password"
+      id="cpassword"
+      class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+      placeholder="Confirm password" formControlName="cpassword"
+    />
+  </div>
+
+    <!-- If the confirm password field is invalid or does not match, show error -->
+  <div *ngIf="newform.get('cpassword')?.invalid && newform.get('cpassword')?.touched || newform.get('cpassword')?.value !== newform.get('password')?.value">
+    <small *ngIf="newform.get('cpassword')?.errors?.['required']">Confirm password is required.</small>
+    <small *ngIf="newform.get('cpassword')?.value !== newform.get('password')?.value"> Passwords do not match.</small>
+  </div>
+
+</div>
+
+
+
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+      >
+        Submit Application
+      </button>
+
+
+    </form>
+
+    <!-- Login Link -->
+    <p class="text-center text-gray-600 mt-6">
+      Already have an account?
+      <a href="#" class="text-blue-600 hover:underline">Login</a>
+    </p>
+  </div>
+</div>

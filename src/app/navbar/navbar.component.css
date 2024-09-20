@@ -1,0 +1,8 @@
+/* app.component.css */
+.dropdown {
+    display: block;
+  }
+  .dropdown-menu {
+    position: relative;
+  }
+  

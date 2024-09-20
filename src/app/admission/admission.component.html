@@ -1,0 +1,20 @@
+<app-navbar></app-navbar>
+<div class="bg-blue-600 min-h-screen flex flex-col items-center justify-center text-center p-6">
+    <!-- Admission Status Section -->
+    <div class="text-white text-4xl font-bold mb-4">
+      Admissions {{ admissionStatus ? 'Are Open' : 'Are Closed' }}
+    </div>
+  
+    <!-- Admission Description -->
+    <div class="text-white text-lg mb-8">
+      {{ admissionStatus ? 'Apply now to join our prestigious school and be part of a vibrant community.' : 'Admissions are currently closed. Please check back later for updates.' }}
+    </div>
+  
+    <!-- Register Button -->
+    <a *ngIf="admissionStatus" [routerLink]="['/register']" class="bg-white text-blue-600 font-semibold py-3 px-8 rounded-lg hover:bg-gray-100 transition duration-300 ease-in-out">
+      Register
+    </a>
+<!-- <button class="bg-white text-blue-600 font-semibold py-3 px-8 rounded-lg hover:bg-gray-100 transition duration-300 ease-in-out"> Register </button> -->
+
+  </div>
+  

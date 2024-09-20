@@ -1,0 +1,30 @@
+/* Optional styles for smooth transition */
+.transition-all {
+    transition: all 0.3s ease;
+  }
+  
+  /* Sidebar styles */
+  nav {
+    position: relative;
+  }
+  
+  nav .p-4 {
+    transition: padding 0.3s ease;
+  }
+  
+  nav .w-64 {
+    width: 16rem; /* Adjust as needed */
+  }
+  
+  nav .w-16 {
+    width: 4rem; /* Adjust as needed */
+  }
+  
+  nav ul li a span {
+    transition: opacity 0.3s ease;
+  }
+  
+  nav .w-16 .ml-3 {
+    opacity: 0;
+  }
+  

@@ -1,0 +1,53 @@
+<div class="flex h-screen bg-gray-800 text-white">
+    <!-- Collapsible Sidebar -->
+    <div [ngClass]="{'w-64': !isCollapsed, 'w-20': isCollapsed}" class="bg-gray-900 flex flex-col transition-all duration-300">
+      <div class="p-4 text-2xl font-bold text-yellow-500">
+        <i (click)="toggleSidebar()" class="fas fa-bars cursor-pointer"></i>
+        <span *ngIf="!isCollapsed">Admin Dashboard</span>
+      </div>
+      <nav class="mt-6">
+        <a class="flex items-center p-4 hover:bg-yellow-500" href="#">
+          <i class="fas fa-users-cog"></i>
+          <span *ngIf="!isCollapsed" class="ml-2">Manage Users</span>
+        </a>
+        <a class="flex items-center p-4 hover:bg-yellow-500" href="#">
+          <i class="fas fa-book"></i>
+          <span *ngIf="!isCollapsed" class="ml-2">Manage Courses</span>
+        </a>
+        <a class="flex items-center p-4 hover:bg-yellow-500" href="#">
+          <i class="fas fa-calendar-alt"></i>
+          <span *ngIf="!isCollapsed" class="ml-2">View Calendar</span>
+        </a>
+        <a class="flex items-center p-4 hover:bg-yellow-500" href="#">
+          <i class="fas fa-chart-line"></i>
+          <span *ngIf="!isCollapsed" class="ml-2">Analytics</span>
+        </a>
+        <!-- Display Teacher and Student Counts -->
+        <div class="mt-6 p-4 bg-gray-700 rounded-lg">
+          <p *ngIf="!isCollapsed" class="text-yellow-500">Total Teachers: {{ totalTeachers }}</p>
+          <p *ngIf="!isCollapsed" class="text-yellow-500">Total Students: {{ totalStudents }}</p>
+        </div>
+      </nav>
+    </div>
+  
+    <!-- Main Content Area -->
+    <div class="flex-1 p-6">
+      <h2 class="text-3xl font-semibold text-gray-300">Welcome, {{admindetails.fullname}} </h2>
+      <p class="mt-2 text-gray-400">Here are your latest tasks and statistics:</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+        <div class="bg-gray-700 p-4 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold text-yellow-500">Pending Approvals</h3>
+          <p class="mt-2">You have 12 pending requests for student admissions.</p>
+        </div>
+        <div class="bg-gray-700 p-4 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold text-yellow-500">New Messages</h3>
+          <p class="mt-2">5 unread messages from staff members.</p>
+        </div>
+        <div class="bg-gray-700 p-4 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold text-yellow-500">Recent Reports</h3>
+          <p class="mt-2">View the latest financial and attendance reports.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

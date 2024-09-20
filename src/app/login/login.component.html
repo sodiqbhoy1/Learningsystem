@@ -1,0 +1,65 @@
+<app-navbar></app-navbar>
+
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+  <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+    <h2 class="text-2xl font-bold mb-6 text-center text-gray-700">Login</h2>
+
+    <form  (submit)="submitBtn()">
+      <!-- Email Input with Icon -->
+      <div class="mb-4 relative">
+        <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+        <div class="flex items-center">
+          <span class="absolute left-3 text-gray-500">
+            <i class="fas fa-envelope"></i> <!-- Email Icon -->
+          </span>
+          <input
+            type="email"
+            id="email"
+            class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Enter your email" formControlName="email"
+          />
+        </div>
+  
+      </div>
+
+      <!-- Password Input with Icon --> 
+      <div class="mb-6 relative">
+        <label for="password" class="block text-gray-700 font-semibold mb-2">Password</label>
+        <div class="flex items-center">
+          <span class="absolute left-3 text-gray-500">
+            <i class="fas fa-lock"></i> <!-- Password Icon -->
+          </span>
+          <input
+            type="password"
+            id="password"
+            class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Enter your password" formControlName="password"
+          />
+        </div>
+      </div>
+
+      <!-- Remember Me Checkbox -->
+      <div class="flex items-center justify-between mb-6">
+        <label class="flex items-center">
+          <input type="checkbox" class="h-4 w-4 text-blue-600" formControlName="check">
+          <span class="ml-2 text-gray-600">Remember me</span>
+        </label>
+        <a href="#" class="text-blue-600 hover:underline">Forgot password?</a>
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+      >
+        Login
+      </button>
+    </form>
+
+    <!-- Sign Up Link -->
+    <p class="text-center text-gray-600 mt-6">
+      Don't have an account?
+      <a href="#" class="text-blue-600 hover:underline">Sign up</a>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="flex h-screen bg-gray-100">
+    <!-- Sidebar -->
+    <nav [ngClass]="{'w-16': !isSidenavOpen, 'w-64': isSidenavOpen, 'transition-all': true}" class="bg-blue-800 text-white flex-shrink-0 h-full overflow-y-auto">
+      <div class="p-4 flex items-center justify-between">
+        <h2 *ngIf="isSidenavOpen" class="text-xl font-bold">Student Dashboard</h2>
+        <button (click)="toggleSidenav()" class="text-white focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path *ngIf="isSidenavOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            <path *ngIf="!isSidenavOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+      <ul class="space-y-2">
+        <li>
+          <a [routerLink]="['/studentdash/studentprofile']" class="flex items-center p-4 hover:bg-blue-700 transition duration-200">
+            <i class="fas fa-user text-lg mr-3"></i>
+            <span *ngIf="isSidenavOpen" class="ml-3">Profile</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/studentdash/studentcourses']" class="flex items-center p-4 hover:bg-blue-700 transition duration-200">
+            <i class="fas fa-book text-lg mr-3"></i>
+            <span *ngIf="isSidenavOpen" class="ml-3">Courses</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/studentdash/studentgrades']" class="flex items-center p-4 hover:bg-blue-700 transition duration-200">
+            <i class="fas fa-graduation-cap text-lg mr-3"></i>
+            <span *ngIf="isSidenavOpen" class="ml-3">Grades</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/settings']" class="flex items-center p-4 hover:bg-blue-700 transition duration-200">
+            <i class="fas fa-cogs text-lg mr-3"></i>
+            <span *ngIf="isSidenavOpen" class="ml-3">Settings</span>
+          </a>
+        </li>
+        <li>
+          <a (click)="openLogoutModal()" class="cursor-pointer flex items-center p-4 hover:bg-blue-700 transition duration-200">
+            <!-- <i class="fas fa-cogs "></i> -->
+            <i class="fa-solid fa-right-from-bracket text-lg mr-3"></i>
+            <span *ngIf="isSidenavOpen" class="ml-3">Log out</span>
+          </a>
+        </li>
+          
+        </ul>
+      </nav>
+      
+      <app-logout #logoutModal (confirm)="logout()" (cancel)="onCancelLogout()"></app-logout>
+    <!-- Logout Modal Component -->
+     <div class=" m-2 w-screen rounded shadow" >
+       <router-outlet></router-outlet>
+
+     </div>
+  </div>
+  

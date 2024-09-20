@@ -1,0 +1,243 @@
+<app-navbar></app-navbar>
+
+<div class="min-h-screen bg-gray-100 flex items-center justify-center mt-20">
+  <div class="bg-white shadow-md rounded-lg p-8 w-full max-w-4xl">
+    <h1 class="text-2xl font-bold text-gray-700 mb-6">Teacher Signup</h1>
+    <form [formGroup]="teacherform" (submit)="submit()" >
+      <!-- Title Select Field -->
+      <div class="mb-4">
+        <label for="title" class="block text-gray-700">Title</label>
+        <div class="relative">
+          <select formControlName="title" id="title" class="w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="" disabled selected>Select Title</option>
+            <option value="Mr">Mr</option>
+            <option value="Mrs">Mrs</option>
+            <option value="Miss">Miss</option>
+            <option value="Dr">Dr</option>
+          </select>
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+            <i class="fas fa-user-tag text-gray-400"></i>
+          </span>
+        </div>
+ <!-- Title field is invalid and touched, show error -->
+ <div *ngIf="teacherform.get('title')?.invalid && teacherform.get('title')?.touched">
+  <small *ngIf="teacherform.get('title')?.errors?.['required']">
+    Title is required.
+  </small>
+
+</div>
+
+      </div>
+
+      <!-- Name Fields Side by Side -->
+      <div class="flex mb-4 space-x-4">
+        <div class="flex-1">
+          <label for="firstName" class="block text-gray-700">First Name</label>
+          <div class="relative">
+            <input formControlName="firstname" type="text" id="firstName" class="w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+              <i class="fas fa-user text-gray-400"></i>
+            </span>
+          </div>
+          <!-- firstname field is invalid and touched, show error -->
+ <div *ngIf="teacherform.get('firstname')?.invalid && teacherform.get('firstname')?.touched">
+  <small *ngIf="teacherform.get('firstname')?.errors?.['required']">
+    Firstname is required.
+  </small>
+
+</div>
+        </div>
+
+        <div class="flex-1">
+          <label for="lastName" class="block text-gray-700">Last Name</label>
+          <div class="relative">
+            <input formControlName="lastname" type="text" id="lastName" class="w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+              <i class="fas fa-user text-gray-400"></i>
+            </span>
+          </div>
+          <!-- lastname field is invalid and touched, show error -->
+ <div *ngIf="teacherform.get('lastname')?.invalid && teacherform.get('lastname')?.touched">
+  <small *ngIf="teacherform.get('lastname')?.errors?.['required']">
+    Lastname is required.
+  </small>
+
+</div>
+        </div>
+        
+      </div>
+
+      <!-- Email Field -->
+      <div class="mb-4">
+        <label for="email" class="block text-gray-700">Email</label>
+        <div class="relative">
+          <input formControlName="email" type="email" id="email" class="w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+            <i class="fas fa-envelope text-gray-400"></i>
+          </span>
+        </div>
+         <!-- If the email field is invalid and touched, show error -->
+       <div *ngIf="teacherform.get('email')?.invalid && teacherform.get('email')?.touched">
+        <small *ngIf="teacherform.get('email')?.errors?.['required']">
+          Email is required.
+        </small>
+        <small *ngIf="teacherform.get('email')?.errors?.['pattern']"> Email must be valid. </small>
+      </div>
+        </div>
+      
+
+
+      <!-- School Graduated From Input Field -->
+      <div class="mb-4">
+        <label for="school" class="block text-gray-700">School Graduated From</label>
+        <div class="relative">
+          <input formControlName="school" type="text" id="school" class="w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+            <i class="fas fa-school text-gray-400"></i>
+          </span>
+        </div>
+            <!-- lastname field is invalid and touched, show error -->
+ <div *ngIf="teacherform.get('school')?.invalid && teacherform.get('school')?.touched">
+  <small *ngIf="teacherform.get('school')?.errors?.['required']">
+    School is required.
+  </small>
+
+</div>
+      </div>
+
+      <!-- Qualification and Gender Fields Side by Side -->
+      <div class="flex mb-6 space-x-4">
+        <div class="flex-1">
+          <label for="qualification" class="block text-gray-700">Qualification</label>
+          <div class="relative">
+            <select formControlName="qualification" id="qualification" class="w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option value="" disabled selected>Select Qualification</option>
+              <option value="Bachelor">Bachelor's Degree</option>
+              <option value="Master">Master's Degree</option>
+              <option value="PhD">Ph.D</option>
+              <option value="Diploma">Diploma</option>
+            </select>
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+              <i class="fas fa-graduation-cap text-gray-400"></i>
+            </span>
+          </div>
+              <!-- Qualification field is invalid and touched, show error -->
+ <div *ngIf="teacherform.get('qualification')?.invalid && teacherform.get('qualification')?.touched">
+  <small *ngIf="teacherform.get('qualification')?.errors?.['required']">
+    Qualifications is required.
+  </small>
+
+</div>
+        </div>
+
+        <div class="flex-1">
+          <label for="gender" class="block text-gray-700">Gender</label>
+          <div class="relative">
+            <select formControlName="gender" id="gender" class="w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option value="" disabled selected>Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+              <i class="fas fa-venus-mars text-gray-400"></i>
+            </span>
+          </div>
+                        <!-- Gender field is invalid and touched, show error -->
+ <div *ngIf="teacherform.get('gender')?.invalid && teacherform.get('gender')?.touched">
+  <small *ngIf="teacherform.get('gender')?.errors?.['required']">
+    Gender is required.
+  </small>
+
+</div>
+        </div>
+      </div>
+
+      <!-- State and Local Government Fields Side by Side -->
+      <div class="flex mb-6 space-x-4">
+        <div class="flex-1">
+          <label for="state" class="block text-gray-700">State</label>
+          <div class="relative">
+            <select formControlName="state" id="state" class="w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option value="" disabled selected>Select State</option>
+              <!-- Populate states dynamically from your backend or script -->
+              <!-- Example options -->
+              <option *ngFor="let state of states" [value]="state.name"> {{ state.name }}</option>
+  
+            </select>
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+              <i class="fas fa-map-marker-alt text-gray-400"></i>
+            </span>
+          </div>
+                        <!-- state field is invalid and touched, show error -->
+ <div *ngIf="teacherform.get('state')?.invalid && teacherform.get('state')?.touched">
+  <small *ngIf="teacherform.get('state')?.errors?.['required']">
+    State required.
+  </small>
+
+</div>
+        </div>
+
+        <div class="flex-1">
+          <label for="localGovernment" class="block text-gray-700">Local Government</label>
+          <div class="relative">
+            <select formControlName="lg" id="localGovernment" class="w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option value="" disabled selected>Select Local Government</option>
+              <!-- Populate local governments dynamically based on selected state -->
+              <option *ngFor="let lg of local_govt" [value]="lg.local_government" > {{lg.local_government}} </option>
+            </select>
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+              <i class="fas fa-map-marker-alt text-gray-400"></i>
+            </span>
+          </div>
+          <div *ngIf="teacherform.get('lg')?.invalid && teacherform.get('lg')?.dirty || teacherform.get('lg' )?.touched ">
+
+            <small *ngIf="teacherform.get('lg')?.errors?.['required']"> Local Government is required.</small>
+          </div>
+            
+          </div>
+        </div>
+      
+
+
+            <!-- Password Fields -->
+            <div class="mb-4">
+              <label for="password" class="block text-gray-700">Password</label>
+              <div class="relative">
+                <input formControlName="password" type="password" id="password" class="w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                  <i class="fas fa-lock text-gray-400"></i>
+                </span>
+              </div>
+               <!-- If the password field is invalid and touched, show error -->
+<div *ngIf="teacherform.get('password')?.invalid && teacherform.get('password')?.touched">
+  <small *ngIf="teacherform.get('password')?.errors?.['required']">
+  Password is required.
+  </small>
+  <small *ngIf="teacherform.get('password')?.errors?.['pattern']">
+  Password must contain at least one uppercase letter, one lowercase letter, and one special character and must be at least 7 characters long.
+  </small>
+  </div>
+            </div>
+      
+            <div class="mb-4">
+              <label for="confirmPassword" class="block text-gray-700">Confirm Password</label>
+              <div class="relative">
+                <input formControlName="cpassword" type="password" id="confirmPassword" class="w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                  <i class="fas fa-lock text-gray-400"></i>
+                </span>
+              </div>
+                  <!-- If the confirm password field is invalid or does not match, show error -->
+  <div *ngIf="teacherform.get('cpassword')?.invalid && teacherform.get('cpassword')?.touched || teacherform.get('cpassword')?.value !== teacherform.get('password')?.value">
+    <small *ngIf="teacherform.get('cpassword')?.errors?.['required']">Confirm password is required.</small>
+    <small *ngIf="teacherform.get('cpassword')?.value !== teacherform.get('password')?.value"> Passwords do not match.</small>
+  </div>
+            </div>
+      
+
+      <!-- Sign Up Button -->
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700">Sign Up</button>
+    </form>
+  </div>
+</div>
